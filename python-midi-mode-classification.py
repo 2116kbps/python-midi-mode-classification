@@ -114,6 +114,9 @@ if __name__ == '__main__':
 '''
 Next steps:
 [] Organize data for normal form for specific recognized chords
+    - Common name (E.g Maj7)
+        - Is there an MIR style guide for this?
+        - Want to be able to output current Chord Symbol / Mode for other players to see
     - Start at triads, include 7ths and available tensions
         [] Everything from "Ideal Soloing Scales"
         [] More basic three-note chords

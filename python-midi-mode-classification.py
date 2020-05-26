@@ -116,7 +116,6 @@ if __name__ == '__main__':
 
 # Compare against previous state?
 
-
 # Apply deeper logic for 7th chords from Jim's book
 
 # Possible features:

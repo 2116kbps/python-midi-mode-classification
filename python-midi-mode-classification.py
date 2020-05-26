@@ -116,7 +116,7 @@ Next steps:
 [] Organize data for normal form for specific recognized chords
     - Common name (E.g Maj7)
         - Is there an MIR style guide for this?
-        - Want to be able to output current Chord Symbol / Mode for other players to see
+        - I want to be able to output the current Chord Symbol / Mode for other players to see
     - Start at triads, include 7ths and available tensions
         [] Everything from "Ideal Soloing Scales"
         [] More basic three-note chords
@@ -125,7 +125,7 @@ Next steps:
 
         Possible solution to root identifier problem:
             - Maybe modify get_normal_form function to pair pitch classes with normal form #s?
-                - This way I can simply identify which digit of the normal form notation I want 
+                - This way I can simply identify the index of the normal form notation I want 
                 to be the root (in the switch/case) and retrieve it
 
 [] Switch/case-like logic for chords and ideal soloing scales

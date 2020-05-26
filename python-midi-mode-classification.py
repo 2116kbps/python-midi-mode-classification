@@ -64,10 +64,10 @@ def get_normal_form(raw_midi_notes):
     # Create final form of Geometric Normal Chord by starting at pc 0 and
     # assigning the notes based on the intervals we just discovered.
     geom_norm_chord_pitches = []
-    intervalSum = 0
+    interval_sum = 0
     for i in range(0, len(geom_norm_chord)):
-        geom_norm_chord_pitches.append(intervalSum)
-        intervalSum += geom_norm_chord[i]
+        geom_norm_chord_pitches.append(interval_sum)
+        interval_sum += geom_norm_chord[i]
     print('Normal Form:')
     print(geom_norm_chord_pitches)
     return(geom_norm_chord_pitches)
@@ -90,6 +90,7 @@ def read_input(input_device):
 
     while True:
         if input_device.poll():
+            # Midi format =  [[[status, data1, data2, data3], timestamp], ...]
             event = input_device.read(1)[0]
             # Ignore miscellaneous MIDI events
             # https://www.midi.org/specifications-old/item/table-2-expanded-messages-list-status-bytes
@@ -110,16 +111,36 @@ if __name__ == '__main__':
     my_input = pygame.midi.Input(1)
     read_input(my_input)
 
+'''
+Next steps:
+[] Organize data for normal form for specific recognized chords
+    - Start at triads, include 7ths and available tensions
+        [] Everything from "Ideal Soloing Scales"
+        [] More basic three-note chords
+        [] Available tensions
+        [] Substitutions
+
+        Possible solution to root identifier problem:
+            - Maybe modify get_normal_form function to pair pitch classes with normal form #s?
+                - This way I can simply identify which digit of the normal form notation I want 
+                to be the root (in the switch/case) and retrieve it
+
+[] Switch/case-like logic for chords and ideal soloing scales
+    - https://www.geeksforgeeks.org/switch-case-in-python-replacement/
+    - Have ordered lists of ideal soloing scales based on personal preference from most consonant to most dissonant
+
+[] Else: fallback on list matching?
+    - https://www.techbeamers.com/program-python-list-contains-elements/
 
 
-# Midi Format =  [[[status, data1, data2, data3], timestamp], ...]
+Other tasks:
+[] Compare against previous state?
+[] Apply deeper logic for 7th chords from Jim Knapp's book
 
-# Compare against previous state?
+Controllers:
+- Expression pedal sweeps through consonant => dissonant spectrum for each sonority
+- Logidy button resets analysis (by default, held over if still applicable)
+- Logidy button goes back to previous analysis
+- Logidy button freezes analysis
 
-# Apply deeper logic for 7th chords from Jim's book
-
-# Possible features:
-# - Logidy button resets analysis (by default, held over if still applicable)
-# - Logidy button goes back to previous analysis
-# - Expression pedal determines consonance/dissonance
-# - Logidy button freezes analysis
+'''
